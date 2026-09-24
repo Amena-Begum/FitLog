@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
-
+import { Toaster } from "react-hot-toast";
 const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
@@ -19,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={oswald.variable}>{children}</body>
+      <body className={oswald.variable}>
+        {children}
+        <Toaster position="top-right" />
+      </body>
     </html>
   );
 }
