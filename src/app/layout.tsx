@@ -1,3 +1,5 @@
+import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer";
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
@@ -20,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={oswald.variable}>
-        {children}
+        <Navbar/>
+       <main> {children} </main>
+        {/* <Footer /> */}
         <Toaster position="top-right" />
       </body>
     </html>

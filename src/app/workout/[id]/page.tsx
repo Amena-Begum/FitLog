@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getWorkoutById } from "../../library/api";
-
+import WorkoutActions from "../../../components/WorkoutActions";
 type Props = {
     params: Promise<{
         id: string;
@@ -80,15 +80,7 @@ export default async function WorkoutDetails({
                     </div>
 
                     {/* Buttons */}
-                    <div className="mt-10 flex gap-4">
-                        <button className="rounded-lg bg-lime-400 px-6 py-3 font-bold text-black">
-                            Add To Today&apos;s Plan
-                        </button>
-
-                        <button className="rounded-lg border border-zinc-700 px-6 py-3">
-                            Save For Later
-                        </button>
-                    </div>
+                    <WorkoutActions workout={workout} />
                 </div>
             </div>
         </section>
