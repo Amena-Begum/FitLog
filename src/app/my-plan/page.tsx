@@ -12,15 +12,38 @@ export default function MyPlan() {
     const plan = useWorkoutStore((state) => state.plan);
     const saved = useWorkoutStore((state) => state.saved);
 
-    const totalMinutes = plan.reduce(
+    // Today's Plan totals
+    const planMinutes = plan.reduce(
         (total, workout) => total + workout.duration,
         0
     );
 
-    const totalCalories = plan.reduce(
+    const planCalories = plan.reduce(
         (total, workout) => total + workout.caloriesBurned,
         0
     );
+
+    // Saved totals
+    const savedMinutes = saved.reduce(
+        (total, workout) => total + workout.duration,
+        0
+    );
+
+    const savedCalories = saved.reduce(
+        (total, workout) => total + workout.caloriesBurned,
+        0
+    );
+
+    const currentCount =
+        activeTab === "plan" ? plan.length : saved.length;
+
+    const currentMinutes =
+        activeTab === "plan" ? planMinutes : savedMinutes;
+
+    const currentCalories =
+        activeTab === "plan"
+            ? planCalories
+            : savedCalories;
 
     return (
         <main className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
@@ -39,33 +62,36 @@ export default function MyPlan() {
             {/* Metrics */}
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
 
+                {/* Exercises */}
                 <div className="rounded-xl border border-zinc-800 bg-[#111827] p-5">
                     <p className="text-sm uppercase text-slate-500">
                         Exercises
                     </p>
 
                     <p className="mt-2 text-3xl font-bold">
-                        {plan.length}
+                        {currentCount}
                     </p>
                 </div>
 
+                {/* Minutes */}
                 <div className="rounded-xl border border-zinc-800 bg-[#111827] p-5">
                     <p className="text-sm uppercase text-slate-500">
                         Minutes
                     </p>
 
                     <p className="mt-2 text-3xl font-bold">
-                        {totalMinutes}
+                        {currentMinutes}
                     </p>
                 </div>
 
+                {/* Calories */}
                 <div className="rounded-xl border border-zinc-800 bg-[#111827] p-5">
                     <p className="text-sm uppercase text-slate-500">
                         Calories
                     </p>
 
                     <p className="mt-2 text-3xl font-bold">
-                        {totalCalories}
+                        {currentCalories}
                     </p>
                 </div>
 
@@ -77,8 +103,8 @@ export default function MyPlan() {
                 <button
                     onClick={() => setActiveTab("plan")}
                     className={`cursor-pointer border-b-2 px-2 pb-3 text-sm font-bold uppercase ${activeTab === "plan"
-                        ? "border-lime-400 text-lime-400"
-                        : "border-transparent text-slate-500 hover:text-white"
+                            ? "border-lime-400 text-lime-400"
+                            : "border-transparent text-slate-500 hover:text-white"
                         }`}
                 >
                     Today&apos;s Plan
@@ -87,8 +113,8 @@ export default function MyPlan() {
                 <button
                     onClick={() => setActiveTab("saved")}
                     className={`cursor-pointer border-b-2 px-2 pb-3 text-sm font-bold uppercase ${activeTab === "saved"
-                        ? "border-lime-400 text-lime-400"
-                        : "border-transparent text-slate-500 hover:text-white"
+                            ? "border-lime-400 text-lime-400"
+                            : "border-transparent text-slate-500 hover:text-white"
                         }`}
                 >
                     Saved
