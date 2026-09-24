@@ -36,3 +36,7 @@ button {
   background: var(--accent);
   color: #000;
 }
+
+.display-font {
+  font-family: var(--font-oswald), sans-serif;
+}
