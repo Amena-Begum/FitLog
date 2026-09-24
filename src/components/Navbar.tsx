@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWorkoutStore } from "../store/useWorkoutStore";
 
-interface NavbarProps {
-    planCount?: number;
-    savedCount?: number;
-}
-
-export default function Navbar({
-    planCount = 0,
-    savedCount = 0,
-}: NavbarProps) {
+export default function Navbar() {
     const pathname = usePathname();
+
+    const planCount = useWorkoutStore(
+        (state) => state.plan.length
+    );
+
+    const savedCount = useWorkoutStore(
+        (state) => state.saved.length
+    );
 
     const isWorkoutActive = pathname === "/";
     const isPlanActive = pathname === "/my-plan";
@@ -41,8 +42,8 @@ export default function Navbar({
                     <Link
                         href="/"
                         className={`relative py-2 text-sm font-bold uppercase tracking-wider transition ${isWorkoutActive
-                                ? "text-[var(--accent)]"
-                                : "text-[var(--muted)] hover:text-white"
+                            ? "text-[var(--accent)]"
+                            : "text-[var(--muted)] hover:text-white"
                             }`}
                     >
                         Workout
@@ -55,8 +56,8 @@ export default function Navbar({
                     <Link
                         href="/my-plan"
                         className={`relative py-2 text-sm font-bold uppercase tracking-wider transition ${isPlanActive
-                                ? "text-[var(--accent)]"
-                                : "text-[var(--muted)] hover:text-white"
+                            ? "text-[var(--accent)]"
+                            : "text-[var(--muted)] hover:text-white"
                             }`}
                     >
                         My Plan
@@ -91,8 +92,8 @@ export default function Navbar({
                     <Link
                         href="/"
                         className={`text-xs font-bold uppercase tracking-widest ${isWorkoutActive
-                                ? "text-[var(--accent)]"
-                                : "text-[var(--muted)]"
+                            ? "text-[var(--accent)]"
+                            : "text-[var(--muted)]"
                             }`}
                     >
                         Workout
@@ -101,8 +102,8 @@ export default function Navbar({
                     <Link
                         href="/my-plan"
                         className={`text-xs font-bold uppercase tracking-widest ${isPlanActive
-                                ? "text-[var(--accent)]"
-                                : "text-[var(--muted)]"
+                            ? "text-[var(--accent)]"
+                            : "text-[var(--muted)]"
                             }`}
                     >
                         My Plan
