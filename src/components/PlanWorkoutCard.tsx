@@ -58,6 +58,7 @@ export default function PlanWorkoutCard({
 
                 {/* Main Content */}
                 <div className="flex flex-1 flex-col justify-center p-5">
+
                     <h3 className="text-xl font-bold uppercase">
                         {workout.name}
                     </h3>
@@ -80,6 +81,7 @@ export default function PlanWorkoutCard({
                             ⭐ {workout.rating}
                         </span>
                     </div>
+
                 </div>
 
                 {/* Right Side Actions */}
@@ -88,7 +90,7 @@ export default function PlanWorkoutCard({
                     {/* View Details */}
                     <Link
                         href={`/workout/${workout.id}`}
-                        className="rounded-lg border border-zinc-700 px-4 py-2 text-center text-sm font-bold transition hover:border-lime-400 hover:text-lime-400"
+                        className="cursor-pointer rounded-lg border border-zinc-700 px-4 py-2 text-center text-sm font-bold transition hover:border-lime-400 hover:text-lime-400"
                     >
                         View Details
                     </Link>
@@ -97,9 +99,9 @@ export default function PlanWorkoutCard({
                     <button
                         onClick={handleMarkAsDone}
                         disabled={isDone}
-                        className={`course-pointer rounded-lg px-4 py-2 text-sm font-bold transition ${isDone
-                            ? "cursor-default bg-zinc-700 text-zinc-400"
-                            : "bg-lime-400 text-black hover:opacity-90"
+                        className={`rounded-lg px-4 py-2 text-sm font-bold transition ${isDone
+                                ? "cursor-default bg-zinc-700 text-zinc-400"
+                                : "cursor-pointer bg-lime-400 text-black hover:opacity-90"
                             }`}
                     >
                         {isDone
@@ -116,6 +118,7 @@ export default function PlanWorkoutCard({
                     </button>
 
                 </div>
+
             </div>
         </article>
     );
