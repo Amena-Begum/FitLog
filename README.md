@@ -4,7 +4,7 @@ FitLog is a responsive workout library web application that helps users explore 
 
 ## Live Website
 
-Add your deployed website link here.
+https://fit-log-green.vercel.app/
 
 ## Features
 
