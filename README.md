@@ -1,36 +1,179 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitLog — Workout Library
+
+FitLog is a responsive workout library web application that helps users explore workouts, view detailed workout information, create a daily workout plan, save workouts for later, and track completed exercises.
+
+## Live Website
+
+Add your deployed website link here.
+
+## Features
+
+* Browse workouts covering different muscle groups.
+* View detailed information about each workout.
+* Add workouts to Today's Plan.
+* Save workouts for later.
+* Remove workouts from Today's Plan or Saved list.
+* Mark workouts as completed.
+* Track total exercises, workout duration, and calories.
+* Sort workouts by duration, calories, or rating.
+* Persistent workout data using Zustand.
+* Toast notifications for user actions.
+* Responsive design for mobile, tablet, and desktop.
+* Loading state while data is being fetched.
+* Custom 404 page for unavailable routes.
+
+## Technologies Used
+
+* Next.js
+* TypeScript
+* React
+* Tailwind CSS
+* Zustand
+* React Hot Toast
+* REST API
+* Git & GitHub
+
+## API
+
+FitLog uses a REST API to fetch workout data.
+
+### All Workouts
+
+```text
+https://api.abcz.workers.dev/api/fitlog
+```
+
+### Single Workout
+
+```text
+https://api.abcz.workers.dev/api/fitlog/:id
+```
+
+## Pages
+
+### Home
+
+The home page contains the hero section and workout library.
+
+### Workout Details
+
+Users can view detailed information about a selected workout, including:
+
+* Workout name
+* Muscle groups
+* Equipment
+* Difficulty
+* Duration
+* Calories
+* Sets and reps
+* Rating
+* Description
+* Instructions
+
+### My Plan
+
+The My Plan page allows users to manage their workouts.
+
+It includes:
+
+* Today's Plan
+* Saved Workouts
+* Exercise count
+* Total duration
+* Total calories
+* Mark as Done
+* Remove workout
+* View Details
+
+## State Management
+
+Zustand is used for managing workout-related client state.
+
+The application manages:
+
+* Today's workout plan
+* Saved workouts
+* Completed workouts
+
+Zustand's persist middleware keeps the workout plan and saved workouts available after refreshing the browser.
+
+## Responsive Design
+
+FitLog is responsive and optimized for:
+
+* Mobile devices
+* Tablets
+* Desktop screens
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Build
 
-## Learn More
+Create a production build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Start the production server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+src/
+├── app/
+│   ├── library/
+│   │   └── api.ts
+│   ├── my-plan/
+│   │   └── page.tsx
+│   ├── workout/
+│   │   └── [id]/
+│   │       └── page.tsx
+│   ├── loading.tsx
+│   ├── not-found.tsx
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── Library.tsx
+│   ├── LibraryContent.tsx
+│   ├── WorkOutCard.tsx
+│   ├── PlanWorkoutCard.tsx
+│   ├── SavedWorkoutCard.tsx
+│   └── Footer.tsx
+│
+└── store/
+    └── useWorkoutStore.ts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+public/
+└── assets/
+    └── logo.png
+```
+
+## License
+
+This project is created for learning and portfolio purposes.
